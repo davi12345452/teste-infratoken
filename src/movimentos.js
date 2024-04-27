@@ -44,7 +44,7 @@ function move(initialPosition, movementsToDo) {
     }
 
     console.log(movements[movements.length - 1]);
-    return movements[movements.length - 1];
+    return movements;
 }
 
 module.exports = move;
