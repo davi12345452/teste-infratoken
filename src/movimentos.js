@@ -1,48 +1,50 @@
-const coordenadas = require('./coordenadas.json')
+const coordinates = require('./coordenadas.json');
 
-function move_M(movment) {
-    const coordenada = movment[2];
-    const _movment = coordenadas[coordenada];
-    return [movment[0] + _movment[1][0], movment[1] + _movment[1][1], movment[2]];
+/**
+ * Movimento que faz quando é um M. Dentro do coordenadas.json
+ * estão os movimentos M para cada posição (S E N W). 
+ */
+function foward(movement) {
+    const [x, y, direction] = movement;
+    const [dx, dy] = coordinates[direction][1];
+    return [x + dx, y + dy, direction];
 }
 
-function move_R(movment) {
-    const coordenada = movment[2];
-    const index = coordenadas[coordenada][0];
-    let newDirection = (index + 3) % 4;
-    for (const dir in coordenadas) {
-        if (coordenadas[dir][0] === newDirection) {
-            return [movment[0], movment[1], dir];
+/**
+ * Essa função faz a rotação realmente. Ela recebe o posicionamento e para
+ * qual lado deve virar, em forma de boolean (True: vira para R; False: vira para L) 
+ */
+function rotate(direction, clockwise = true) {
+    const rotations = clockwise ? 3: 1;
+    const index = coordinates[direction][0];
+    const newIndex = (index + rotations) % 4;
+    for (const dir in coordinates) {
+        if (coordinates[dir][0] === newIndex) {
+            return dir;
         }
     }
 }
 
-function move_L(movment) {
-    const coordenada = movment[2];
-    const index = coordenadas[coordenada][0]; 
-    const newDirection = (index + 1) % 4;
-    for (const dir in coordenadas) {
-        if (coordenadas[dir][0] === newDirection) {
-            return [movment[0], movment[1], dir];
-        }
-    }
-}
+/**
+ * Essa função recebe uma posição inicial ([x, y, POSIÇÃO]) e um array com movimentos a se fazerem:
+ * (['L', 'R'...]). Ela devolve um array com cada passo que se deu. É necessário fornecer informações
+ * limpas aqui. No input validation há dois arquivos que limpam de acordo para essa função.
+ */
+function move(initialPosition, movementsToDo) {
+    let movements = [];
+    let position = initialPosition;
 
-function move(initialPosition, movmentsToDo) {
-    let movments = [];
-    let postion = initialPosition;
-    for(let i = 0; i < movmentsToDo.length; i++) {
-        if (movmentsToDo[i] == 'L') {
-            postion = move_L(postion);
-        } else if ( movmentsToDo[i] == 'R') {
-            postion = move_R(postion);
+    for (const movement of movementsToDo) {
+        if (movement === 'L' || movement === 'R') {
+            position[2] = rotate(position[2], movement === 'R');
         } else {
-            postion = move_M(postion);
+            position = foward(position);
         }
-        movments.push(postion);
+        movements.push(position);
     }
-    console.log(movments[movmentsToDo.length - 1])
-    return movments[-1];
+
+    console.log(movements[movements.length - 1]);
+    return movements[movements.length - 1];
 }
 
 module.exports = move;
