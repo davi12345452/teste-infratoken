@@ -1,3 +1,77 @@
 {
-    
+  "movements": [
+    {
+      "initial_position": "3 3 E",
+      "movements_to_do": "MRRMMRMRRM",
+      "movements_done": [
+        "4 3 E",
+        "4 3 S",
+        "4 3 W",
+        "3 3 W",
+        "2 3 W",
+        "2 3 N",
+        "2 4 N",
+        "2 4 E",
+        "2 4 S",
+        "2 3 S"
+      ],
+      "final_position": "2 3 S",
+      "created_at": "2024-04-28T22:35:50.181Z"
+    },
+    {
+      "initial_position": "3 3 E",
+      "movements_to_do": "MRRMMRMRRM",
+      "movements_done": [
+        "4 3 E",
+        "4 3 S",
+        "4 3 W",
+        "3 3 W",
+        "2 3 W",
+        "2 3 N",
+        "2 4 N",
+        "2 4 E",
+        "2 4 S",
+        "2 3 S"
+      ],
+      "final_position": "2 3 S",
+      "created_at": "2024-04-28T22:37:44.956Z"
+    },
+    {
+      "initial_position": "3 3 E",
+      "movements_to_do": "MRRMMRMRRM",
+      "movements_done": [
+        "4 3 E",
+        "4 3 S",
+        "4 3 W",
+        "3 3 W",
+        "2 3 W",
+        "2 3 N",
+        "2 4 N",
+        "2 4 E",
+        "2 4 S",
+        "2 3 S"
+      ],
+      "final_position": "2 3 S",
+      "created_at": "2024-04-28T22:39:06.936Z"
+    },
+    {
+      "initial_position": "1 1 N",
+      "movements_to_do": "LRLRLRMRLLR",
+      "movements_done": [
+        "1 1 W",
+        "1 1 N",
+        "1 1 W",
+        "1 1 N",
+        "1 1 W",
+        "1 1 N",
+        "1 2 N",
+        "1 2 E",
+        "1 2 N",
+        "1 2 W",
+        "1 2 N"
+      ],
+      "final_position": "1 2 N",
+      "created_at": "2024-04-28T22:39:22.066Z"
+    }
+  ]
 }

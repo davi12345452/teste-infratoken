@@ -19,8 +19,6 @@ function move(initialPosition, movementsToDo) {
         }
         movements.push(position);
     }
-
-    console.log(movements);
     return movements;
 }
 
