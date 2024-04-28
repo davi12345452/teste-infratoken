@@ -4,8 +4,8 @@ const coordinates = require('./coordenadas.json');
  * Movimento que faz quando é um M. Dentro do coordenadas.json
  * estão os movimentos M para cada posição (S E N W). 
  */
-function foward(movement) {
-    const [x, y, direction] = movement;
+function foward(position) {
+    const [x, y, direction] = position;
     const [dx, dy] = coordinates[direction][1];
     return [x + dx, y + dy, direction];
 }
@@ -14,13 +14,14 @@ function foward(movement) {
  * Essa função faz a rotação realmente. Ela recebe o posicionamento e para
  * qual lado deve virar, em forma de boolean (True: vira para R; False: vira para L) 
  */
-function rotate(direction, clockwise = true) {
-    const rotations = clockwise ? 3: 1;
+function rotate(position, clockwise = true) {
+    const [x, y, direction] = position;
+    const rotations = clockwise ? 3 : 1;
     const index = coordinates[direction][0];
     const newIndex = (index + rotations) % 4;
     for (const dir in coordinates) {
         if (coordinates[dir][0] === newIndex) {
-            return dir;
+            return [x, y, dir];
         }
     }
 }
@@ -36,14 +37,14 @@ function move(initialPosition, movementsToDo) {
 
     for (const movement of movementsToDo) {
         if (movement === 'L' || movement === 'R') {
-            position[2] = rotate(position[2], movement === 'R');
+            position = rotate(position, movement === 'R');
         } else {
             position = foward(position);
         }
         movements.push(position);
     }
 
-    console.log(movements[movements.length - 1]);
+    console.log(movements);
     return movements;
 }
 
