@@ -20,4 +20,6 @@ model Movement {
   movements_done     String[]
   final_position     String
   created_at         DateTime    @default(now())
+
+  @@map("movement")
 }
