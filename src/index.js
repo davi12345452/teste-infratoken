@@ -18,13 +18,13 @@ const teste2 = programV1('3 3 E', 'MRRMMRMRRM');
 console.log(
     `
     TESTE NÚMERO 1:
-    ESPERADO: 1,3,N
+    ESPERADO:  1,3,N
     RESULTADO: ${teste1}`
 )
 
 console.log(
     `
     TESTE NÚMERO 2:
-    ESPERADO: 2,3,S
+    ESPERADO:  2,3,S
     RESULTADO: ${teste2}`
 )
