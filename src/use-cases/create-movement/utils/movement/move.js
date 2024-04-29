@@ -1,4 +1,4 @@
-const coordinates = require('../coordenadas.json');
+const coordinates = require('../../../../assets/coordenadas.json');
 const foward = require('./foward');
 const rotate = require('./rotate');
 /**
