@@ -9,6 +9,4 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma migrate deploy
-
 CMD ["node", "src/index"]
