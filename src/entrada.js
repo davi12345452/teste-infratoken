@@ -1,5 +1,0 @@
-
-
-
-
-modules.export = limparEntradaMovimentos, validarPosicaoInicial;
