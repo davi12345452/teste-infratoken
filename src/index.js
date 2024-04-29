@@ -11,7 +11,7 @@ const createMovement = require('./use-cases/create-movement/index');
 app.use(express.json())
 
 // Endpoint para criar um movimento. Usuário fornece a posição inicial e quais movimentos serão feitos
-app.post(`/movement/`, async (req, res) => {
+app.post('/movement/', async (req, res) => {
     const { initialPosition, movementsToDo } = req.body;
     try {
         const data = createMovement(initialPosition, movementsToDo);
@@ -23,13 +23,13 @@ app.post(`/movement/`, async (req, res) => {
 });
 
 // Endpoint para pegar todos os movimentos já realizados na aplicação
-app.get(`/movement/`, async (req, res) => {
+app.get('/movement/', async (req, res) => {
     const movements = await prisma.movement.findMany();
     return res.json(movements);
   })
 
 // Endpoint para pegar um movimento em específico, através do ID.
-app.get(`/movement/:id`, async (req, res) => {
+app.get('/movement/:id', async (req, res) => {
     const { id } = req.params;
   
     const movement = await prisma.movement.findUnique({
@@ -43,5 +43,13 @@ app.get(`/movement/:id`, async (req, res) => {
     return res.json(movement);
   })
 
+app.get('/', (req, res) => {
+    return res.send('Teste deu certo')
+})
 
-app.listen(3030)
+
+app.listen(3030, (err) => {
+    if(err) {
+        console.log('Problem to run server');
+    }
+})
