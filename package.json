@@ -4,6 +4,7 @@
   "description": "Teste técnico para a vaga de desenvolvedor backend na Infratoken",
   "main": "index.js",
   "scripts": {
+    "dev": "node src/index",
     "test": "jest"
   },
   "author": "",

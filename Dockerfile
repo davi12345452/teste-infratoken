@@ -1,16 +1,13 @@
-# Use uma imagem base do Node.js
-FROM node:14
+FROM node:15-alpine
 
+# Create app directory
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-COPY prisma ./prisma/
-
 RUN npm install
-
-COPY . .
+COPY . . 
+EXPOSE 5000
 
 RUN npx prisma generate
-
-CMD ["node", "src/index"]
+CMD [ "npm", "run", "dev" ]
