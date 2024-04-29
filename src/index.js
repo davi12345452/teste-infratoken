@@ -3,6 +3,8 @@
 const express = require("express");
 const { PrismaClient } = require('@prisma/client');
 
+require('dotenv').config()
+
 const prisma = new PrismaClient();
 const app = express();
 
@@ -45,8 +47,10 @@ app.get('/movement/:id', async (req, res) => {
 
   // Rodando a aplicação
 
-app.listen(3030, (err) => {
+  app.listen(process.env.PORT, (err) => {
     if(err) {
         console.log('Problem to run server');
+    } else {
+        console.log('Server initialized successfully');
     }
 })

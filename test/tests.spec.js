@@ -7,9 +7,6 @@ const rotate = require('../src/use-cases/create-movement/utils/movement/rotate')
 const validateInitialPosition = require('../src/use-cases/create-movement/utils/input/initial-position-validator');
 const cleanInputMovements = require('../src/use-cases/create-movement/utils/input/movement-to-do-validator');
 
-const finalPositionCleaner = require('../src/use-cases/create-movement/utils/output/final-position-cleaner');
-const movementsDoneCleaner = require('../src/use-cases/create-movement/utils/output/movements-done-cleaner');
-
 const createMovement = require('../src/use-cases/create-movement/index');
 
 /**
@@ -60,6 +57,10 @@ describe("Testando a função rotate", () => {
  */
 
 describe("Testando a função rotate", () => {
+    /**
+     * Testando inicialmente se a aplicação quando chamada corretamente, devolve
+     * o esperado.
+     */
     it("Testando a posição final do exemplo 2 na função geral", () => {
         const result = createMovement('1 2 N', 'LMLMLMLMM');
         expect(result.final_position).toEqual('1 3 N');
@@ -69,6 +70,12 @@ describe("Testando a função rotate", () => {
         const result = createMovement('3 3 E', 'MRRMMRMRRM');
         expect(result.final_position).toEqual('2 3 S');
     });
+
+    /**
+     * Testando os erros atrelados ao envio de posição inicial: Se os pontos do
+     * plano cartesiano são realmente números, se o sentido é válido, se há um
+     * espaçamento entre os 3 itens.
+     */
 
     it("Testando erro de posição inicial sem espaço", () => {
         expect(() => {
@@ -87,6 +94,11 @@ describe("Testando a função rotate", () => {
             createMovement('1 2 H', 'MRRMMRMRRM');
         }).toThrow('A direção deve ser uma das seguintes: S, E, W ou N.');
     });
+
+    /**
+     * Testando os erros atrelados ao envio do caminho a se fazer: se os movimentos
+     * são válidos e se é uma string.
+     */
 
     it("Testando erro de movimento inválido por não ser string", () => {
         expect(() => {
