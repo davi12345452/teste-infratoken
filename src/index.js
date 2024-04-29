@@ -43,15 +43,10 @@ app.get('/movement/:id', async (req, res) => {
     return res.json(movement);
   })
 
-app.get('/', (req, res) => {
-    return res.send('Teste deu certo')
-})
+  // Rodando a aplicação
 
-
-app.listen(3000 || 443 || 3003, (err) => {
+app.listen(3030, (err) => {
     if(err) {
         console.log('Problem to run server');
-    } else {
-        console.log('server iniciado')
     }
 })
