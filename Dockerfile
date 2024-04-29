@@ -9,5 +9,6 @@ RUN npm install
 
 COPY . .
 
+RUN npx prisma generate
 
 CMD ["node", "src/index"]
