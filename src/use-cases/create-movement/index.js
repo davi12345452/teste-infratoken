@@ -4,6 +4,12 @@ const validateMovementsToDo = require('./utils/input/movement-to-do-validator');
 const cleanFinalPosition = require('./utils/output/final-position-cleaner');
 const cleanMovementsDone = require('./utils/output/movements-done-cleaner');
 
+/** 
+ * Essa é a função que agrega a lógica da aplicação e manipula dados de entrada
+ * e saída. A ideia é devolver um data pronto para ser usado em um .create de
+ * movement no Prisma. 
+ */
+
 function createMovement(initialPosition, movementsToDo) {
     const initialPositionValidated = validateInitialPosition(initialPosition);
     const movementsToDoValidated = validateMovementsToDo(movementsToDo);
