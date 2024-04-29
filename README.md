@@ -24,6 +24,3 @@ $ npx prisma migrate deploy
 # Rodar o servidor
 $ node src/index
 ```
-
-## Versão 4 (Branch v4 - em desenvolvimento)
-Essa versão contempla a implementação de testes unitários nos códigos da lógica do problema, além de que será disponibilizado em um domínio público, sem precisar de configuração e teste em ambiente local. 
