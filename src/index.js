@@ -9,17 +9,19 @@ const createMovement = require('./use-cases/create-movement/index');
 app.use(express.json())
 
 app.post(`/movement/`, async (req, res) => {
-    const {initialPosition, movementsToDo } = req.body
-    const data = createMovement(initialPosition, movementsToDo);
-    const movement = await prisma.movement.create({
-        data,
-    })
-    res.json(movement);
-  })
+    const { initialPosition, movementsToDo } = req.body;
+    try {
+        const data = createMovement(initialPosition, movementsToDo);
+        const movement = await prisma.movement.create({ data });
+        return res.json(movement);
+    } catch (error) {
+        return res.status(400).send({ error: error.message });
+    }
+});
 
 app.get(`/movement/`, async (req, res) => {
     const movements = await prisma.movement.findMany();
-    res.json(movements);
+    return res.json(movements);
   })
 
 app.get(`/movement/:id`, async (req, res) => {
@@ -29,7 +31,7 @@ app.get(`/movement/:id`, async (req, res) => {
         where: { id }
     });
 
-    res.json(movement);
+    return res.json(movement);
   })
 
 
