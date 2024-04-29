@@ -48,8 +48,10 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(3030, (err) => {
+app.listen(3000 || 443 || 3003, (err) => {
     if(err) {
         console.log('Problem to run server');
+    } else {
+        console.log('server iniciado')
     }
 })
